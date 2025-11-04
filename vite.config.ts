@@ -7,9 +7,6 @@ export default defineConfig(({ mode }) => {
     return {
       server: {
         port: 3000,
-        host: '0.0.0.0',
-        // allow this ngrok host so the dev server accepts requests proxied from it
-        allowedHosts: ['0c4ae336f0ec.ngrok-free.app'],
       },
       plugins: [react()],
       define: {
