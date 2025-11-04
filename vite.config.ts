@@ -7,22 +7,17 @@ export default defineConfig(({ mode }) => {
     return {
       server: {
         port: 3000,
+        host: '0.0.0.0'
       },
       plugins: [react()],
       define: {
-        // Prefer environment variables provided at build time (e.g. by Vercel).
-        // If not present, fall back to .env files loaded by loadEnv.
-        'process.env.API_KEY': JSON.stringify(process.env.GEMINI_API_KEY || env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(process.env.GEMINI_API_KEY || env.GEMINI_API_KEY)
+        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
       },
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
-      }
-      ,
-      build: {
-        outDir: 'dist'
       }
     };
 });
